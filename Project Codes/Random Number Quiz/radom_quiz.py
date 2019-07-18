@@ -1,40 +1,27 @@
 import random
 
-chances = 3
 
-random_number = random.randint(1, 10)
-
-def choose():
-    chosen_number = input("Enter A Number Between 1 and 10 ")
-    chosen_number = int(chosen_number)
-    return chosen_number
-    
-    print("Number Chosen")
+random_number = random.randint(1, 15)
+chosen_number = int(input("Enter a number between 0 and 15 "))
 
 
-def compare(chosen_number, random_number):
-    
-    if chosen_number == random_number:
-        print ("You guessed right! The number is " + str(random_number))
-        end_game()
+if chosen_number == random_number:
+    print ("Congrats! You guessed right!")
+else:
+    if chosen_number > random_number:
+        chosen_number = int(input("Try again, random number is less than " + str(chosen_number) + " "))
         
-    elif chosen_number < random_number:
-        print ("Try again, the number is greater than " + str(chosen_number))
-        reduce_chance()
-    
-    elif chosen_number > random_number:
-        print ("Try again, the number is less that " + str(chosen_number))
-        reduce_chance()
+        if chosen_number == random_number:
+            print ("Congrats! You guessed right!")
+        else:
+            print ("Sorry, Game Over!")
+            
+    elif random_number > chosen_number:
+        chosen_number = int(input("Try again, random number is greater than " + str(chosen_number) + " "))
+        
+        if chosen_number == random_number:
+            print ("Congrats! You guessed right!")
+        else:
+            print ("Sorry, Game Over!")
 
-def reduce_chance():
-    chances - 1
-    
-def end_game():
-    chances = 0
-
-while chances >= 1:
-    chosen_number = choose()
-    compare(chosen_number, random_number)
-
-
-print("Game Over")
+#print(random_number, chosen_number)
